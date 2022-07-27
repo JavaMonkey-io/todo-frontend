@@ -14,11 +14,16 @@ jobs:
     steps:
 
     - name: Checkout Code
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
     
     - name: Use Node.js 16.16.0
       uses: actions/setup-node@v3
       with:
         node-version: 16.16.0
-    - run: yarn install --verbose
-    - run: yarn build --verbose
+        cache: 'yarn'
+
+    - name: Install Dependencies
+    - run: yarn install
+
+    - name: Build Frontend
+    - run: yarn build
