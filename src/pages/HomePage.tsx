@@ -12,7 +12,7 @@ const HomePage = () => {
         axios.get("/api/hello")
             .then(res=>setMessage(res.data))
             .catch(res=>setMessage("Unknown message"))
-    }, [])
+    })
 
     return (
         <>

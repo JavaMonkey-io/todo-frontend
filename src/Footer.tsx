@@ -15,7 +15,7 @@ const Footer = () => {
             .catch(err => {
                 setBackendVersion("Unknown")
             })
-    }, [])
+    })
 
     return (<p>
         Frontend: v{packageJson.version} | Backend: v{backendVersion}
