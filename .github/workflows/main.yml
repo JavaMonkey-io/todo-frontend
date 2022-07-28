@@ -53,5 +53,5 @@ jobs:
         REPOSITORY: todo-frontend
         IMAGE_TAG: main
       run: |
-        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+        DOCKER_BUILDKIT=1 docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
