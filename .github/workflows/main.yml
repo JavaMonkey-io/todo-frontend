@@ -43,6 +43,6 @@ jobs:
     - name: Build and Push Image
       uses: docker/build-push-action@v3
       with:
-#        push: true
+        push: true
         context: .
         tags: ccaspanello/todo-frontend:latest
