@@ -1,6 +1,6 @@
 {
   "name": "todo-frontend",
-  "version": "1.0.0-SNAPSHOT",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
