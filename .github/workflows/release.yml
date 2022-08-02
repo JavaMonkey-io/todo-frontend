@@ -30,12 +30,9 @@ jobs:
     - name: Roll Version
       run: |
         releaseVersion=$(node -e "console.log(require('./package.json').version.replace('-SNAPSHOT',''));")
-        yarn version --new-version $releaseVersion
         git config --global user.name 'Service Account'
         git config --global user.email 'ccaspanello@gmail.com'
-        git add package.json
-        git commit -am "[RELEASE] Setting release version to: $releaseVersion"
+        yarn version --new-version $releaseVersion
         git push
         yarn version --new-version ${{ github.event.inputs.nextSnapshotVersion }}
-        git add package.json
-        git commit -am "[RELEASE] Setting SNAPSHOT version to: $releaseVersion"
+        git push
