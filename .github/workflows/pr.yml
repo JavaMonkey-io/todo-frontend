@@ -1,0 +1,28 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    # Build & Test Frontend
+    - name: Use Node.js 16.16.0
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.16.0
+        cache: 'yarn'
+
+    - name: Install Dependencies
+      run: yarn install
+
+    - name: Build Frontend
+      run: yarn build && ls -lah
