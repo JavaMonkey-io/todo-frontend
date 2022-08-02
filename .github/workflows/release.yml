@@ -20,3 +20,20 @@ jobs:
 
     - name: Checkout Code
       uses: actions/checkout@v3
+
+    - name: Use Node.js 16.16.0
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.16.0
+        cache: 'yarn'
+
+    - name: Roll Version
+      run: |
+        releaseVersion=$(node -e "console.log(require('./package.json').version.replace('-SNAPSHOT',''));")
+        yarn version $releaseVersion
+        git config --global user.name 'Service Account'
+        git config --global user.email 'ccaspanello@gmail.com'
+        git commit -am "[RELEASE] Setting release version to: $releaseVersion"
+        git push
+        yarn version ${{ github.event.inputs.nextSnapshotVersion }}
+        git commit -am "[RELEASE] Setting SNAPSHOT version to: $releaseVersion"
