@@ -30,7 +30,7 @@ jobs:
     - name: Roll Version
       run: |
         releaseVersion=$(node -e "console.log(require('./package.json').version.replace('-SNAPSHOT',''));")
-        git config --global user.name 'Service Account'
+        git config --global user.name 'Chris Caspanello'
         git config --global user.email 'ccaspanello@gmail.com'
         yarn version --new-version $releaseVersion
         git push
