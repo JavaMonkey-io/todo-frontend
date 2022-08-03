@@ -13,6 +13,8 @@ jobs:
 
     - name: Checkout Code
       uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.BUILD_GUY_PAT }}
 
     # Build & Test Frontend
     - name: Use Node.js 16.16.0
